@@ -29,11 +29,14 @@ class cache {
 		// Function to get value corresponding to key from cache
 		string get(int key);
 
+		// Print all items in cache memory
+		void print();
+
 	private:
 		int cache_size;
 		eviction_policy cache_type;
-		map <int, string> store;
-
+		map <int, pair <int, string>> store;
+		int time_stamp;
 		// Eviction function
 		void evict();
 };
