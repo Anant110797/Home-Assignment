@@ -1,11 +1,12 @@
 #include "cache.hpp"
+#include <string>
 
 cache::cache(int size, eviction_policy type) {
 	cache_size = size;
 	cache_type = type;
 }
 
-void cache::insert(int key, int value) {
+void cache::insert(int key, string value) {
 	if(store.size() < cache_size) {
 		store.insert(make_pair(key, value));
 	} else {
@@ -14,14 +15,13 @@ void cache::insert(int key, int value) {
 	}
 }
 
-int cache::get(int key) {
+string cache::get(int key) {
 	if(store.find(key) != store.end())
 		return store[key];
 	else
-		return -1;
+		return "";
 }
 
-// TODO: Implement evict
 void cache::evict() {
 	switch(cache_type) {
 		case FIFO:

@@ -2,6 +2,7 @@
 #define CACHE_H
 
 #include <map>
+#include <string>
 using namespace std;
 
 enum eviction_policy {
@@ -23,15 +24,15 @@ class cache {
 		~cache();
 
 		// Function to insert (key, value) pair in cache
-		void insert(int key, int value);
+		void insert(int key, string value);
 
 		// Function to get value corresponding to key from cache
-		int get(int key);
+		string get(int key);
 
 	private:
 		int cache_size;
 		eviction_policy cache_type;
-		map <int, int> store;
+		map <int, string> store;
 
 		// Eviction function
 		void evict();
